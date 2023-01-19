@@ -5,6 +5,7 @@ import "@nomiclabs/hardhat-ethers";
 import "@openzeppelin/hardhat-upgrades";
 import "hardhat-gas-reporter";
 import "hardhat-contract-sizer";
+import "hardhat-docgen";
 
 // user created tasks
 import "./tasks/index";
@@ -34,6 +35,11 @@ const config: HardhatUserConfig = {
     target: "ethers-v5",
   },
   contractSizer: {},
+  docgen: {
+    path: './docs',
+    clear: true,
+    runOnCompile: true,
+  },
 };
 
 export default config;
