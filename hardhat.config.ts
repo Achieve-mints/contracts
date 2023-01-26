@@ -36,7 +36,7 @@ const config: HardhatUserConfig = {
   },
   contractSizer: {},
   docgen: {
-    path: './docs',
+    path: "./docs",
     clear: true,
     runOnCompile: true,
   },

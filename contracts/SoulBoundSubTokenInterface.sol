@@ -5,5 +5,5 @@ pragma solidity ^0.8.9;
 // souldboundbase must implement these
 interface SoulBoundSubTokenI {
     // function mint(address to_) external returns (uint256);
-    function metadata(uint256 tokenId_) external view returns(bytes memory);
+    function metadata(uint256 tokenId_) external view returns (bytes memory);
 }

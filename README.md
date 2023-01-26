@@ -9,12 +9,10 @@ ProxyAdmin needs to be transferred
 We use AccessControl roles so that only valid/working admins can be added...
 IE workflow:
 
-* existing admin adds new admin
-* new admin removes past admin
+- existing admin adds new admin
+- new admin removes past admin
 
 In case new admin is unable to remove past admin, old admin may remove new admin.
-
-
 
 Hardhat deploy is not used because of:
 https://github.com/wighawag/hardhat-deploy/pull/358/files

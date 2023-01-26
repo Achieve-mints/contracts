@@ -1,7 +1,7 @@
 import { ethers, upgrades } from "hardhat";
 import { expect } from "./chai-setup";
 import { Signer } from "ethers";
-import { SoulBoundBaseToken } from '../typechain/SoulBoundBaseToken';
+import { SoulBoundBaseToken } from "../typechain/SoulBoundBaseToken";
 
 describe("SoulBound Base Unit Tests", () => {
   let signers: Signer[];
@@ -44,38 +44,83 @@ describe("SoulBound Base Unit Tests", () => {
   });
 
   describe("roles", () => {
-    const DEFAULT_ADMIN_ROLE_CODE = '0x0000000000000000000000000000000000000000000000000000000000000000';
+    const DEFAULT_ADMIN_ROLE_CODE =
+      "0x0000000000000000000000000000000000000000000000000000000000000000";
 
     it("get DEFAULT_ADMIN_ROLE", async () => {
       expect(await base.DEFAULT_ADMIN_ROLE()).to.equal(DEFAULT_ADMIN_ROLE_CODE);
     });
     it("check owner has DEFAULT_ADMIN_ROLE", async () => {
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())).to.equal(true);
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      ).to.equal(true);
     });
     it("check user1 does not have DEFAULT_ADMIN_ROLE", async () => {
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())).to.equal(false);
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      ).to.equal(false);
     });
     it("check granting admin role to user1 works", async () => {
-      expect(await base.connect(owner).grantRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress()));
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())).to.equal(true);
+      expect(
+        await base
+          .connect(owner)
+          .grantRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      );
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      ).to.equal(true);
     });
     it("check revoking admin role from user1 works", async () => {
-      expect(await base.connect(owner).grantRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress()));
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())).to.equal(true);
-      expect(await base.connect(owner).revokeRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress()));
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())).to.equal(false);
+      expect(
+        await base
+          .connect(owner)
+          .grantRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      );
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      ).to.equal(true);
+      expect(
+        await base
+          .connect(owner)
+          .revokeRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      );
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      ).to.equal(false);
     });
     it("check revoking admin role from owner works", async () => {
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())).to.equal(true);
-      expect(await base.connect(owner).grantRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress()));
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())).to.equal(true);
-      expect(await base.connect(user1).revokeRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress()));
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())).to.equal(false);
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      ).to.equal(true);
+      expect(
+        await base
+          .connect(owner)
+          .grantRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      );
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await user1.getAddress())
+      ).to.equal(true);
+      expect(
+        await base
+          .connect(user1)
+          .revokeRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      );
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      ).to.equal(false);
     });
     it("check renouncing admin role from owner works", async () => {
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())).to.equal(true);
-      expect(await base.connect(owner).renounceRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress()));
-      expect(await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())).to.equal(false);
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      ).to.equal(true);
+      expect(
+        await base
+          .connect(owner)
+          .renounceRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      );
+      expect(
+        await base.hasRole(DEFAULT_ADMIN_ROLE_CODE, await owner.getAddress())
+      ).to.equal(false);
     });
   });
 

@@ -14,7 +14,12 @@ import "./SoulBoundBaseInterface.sol";
 // @author Kasumi
 // access control is used for DEFAULT_ADMIN_ROLE, allowing safe(r) transfer of ownership
 // TODO uriStorage is maybe not needed, included in case (some subtokens may want to modify these?)
-contract SoulBoundBaseToken is SoulBoundBaseI, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, AccessControlUpgradeable {
+contract SoulBoundBaseToken is
+    SoulBoundBaseI,
+    ERC721EnumerableUpgradeable,
+    ERC721URIStorageUpgradeable,
+    AccessControlUpgradeable
+{
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
     // stores the next tokenid
@@ -25,7 +30,7 @@ contract SoulBoundBaseToken is SoulBoundBaseI, ERC721EnumerableUpgradeable, ERC7
     mapping(address => bool) public _subTokensEnabled;
     mapping(uint256 => address) public _tokenIdToSubtoken;
 
-    modifier onlySubToken {
+    modifier onlySubToken() {
         require(_subTokensEnabled[msg.sender], "subtoken not enabled");
         _;
     }

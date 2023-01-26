@@ -22,13 +22,10 @@ async function main() {
 
   // now we deploy a subtoken
 
-  const ExampleToken = await ethers.getContractFactory(
-    "ExampleToken"
-  );
+  const ExampleToken = await ethers.getContractFactory("ExampleToken");
   const exampleToken = await ExampleToken.deploy(soulboundBaseToken.address);
   await exampleToken.deployed();
   console.log("ExampleToken deployed to:", exampleToken.address);
-
 
   await addSubToken(soulboundBaseToken.address, exampleToken.address);
 }
