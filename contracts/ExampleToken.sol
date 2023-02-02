@@ -31,6 +31,6 @@ contract ExampleToken is SoulBoundSubTokenI {
 
     function metadata(uint256 tokenId_) external view returns (bytes memory) {
         require(_owners[tokenId_] != address(0x0), "token not found");
-        return abi.encodePacked(_metadata[tokenId_].s);
+        return abi.encode(_metadata[tokenId_].s);
     }
 }

@@ -9,6 +9,7 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 import "./SoulBoundBaseInterface.sol";
+import "./SoulBoundSubTokenInterface.sol";
 
 // @title Upgradeable SoulBound base token
 // @author Kasumi
@@ -71,6 +72,16 @@ contract SoulBoundBaseToken is
         _subTokensEnabled[impl_] = enabled_;
         emit SubTokenStatusChange(impl_, enabled_);
     }
+
+    /// @notice Retrieves the metadata provided by the subtoken. Note: this will be different format dependig on the subtoken.
+    /// @param tokenId_ The tokenId
+    /// @return The encoded metadata
+    function metadata(uint256 tokenId_) external view returns (bytes memory) {
+        require(_tokenIdToSubtoken[tokenId_] != address(0x0), "subtoken not found");
+        SoulBoundSubTokenI subtoken = SoulBoundSubTokenI(_tokenIdToSubtoken[tokenId_]);
+        return subtoken.metadata(tokenId_);
+    }
+
 
     /// @notice Defines the baseURI for all subsequent uri lookups
     /// @param baseURI_ The new baseURI
