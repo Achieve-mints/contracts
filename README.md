@@ -59,3 +59,21 @@ Via Husky, check styling
 #### On PR
 
 Check that contracts compile and tests pass
+
+### Static analysis
+
+To install slither:
+
+```
+python3 -m venv venv # must be at least 3.8
+pip install -r requirements.txt
+source venv/bin/activate
+```
+
+Then to run:
+
+```
+slither .
+```
+
+More documentation can be found here: https://github.com/crytic/slither

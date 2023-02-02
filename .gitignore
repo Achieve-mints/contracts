@@ -112,3 +112,5 @@ dist
 # OpenZeppelin Upgrades
 # hardhat/localhost
 .openzeppelin/unknown-31337.json
+
+venv
