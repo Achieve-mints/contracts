@@ -6,6 +6,7 @@ import "@openzeppelin/hardhat-upgrades";
 import "hardhat-gas-reporter";
 import "hardhat-contract-sizer";
 import "hardhat-docgen";
+import "solidity-coverage";
 
 // user created tasks
 import "./tasks/index";

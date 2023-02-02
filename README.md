@@ -29,6 +29,7 @@ npx hardhat run --network localhost scripts/001-deploy-soulbound-base.ts
 - `yarn build` clears cache and compiles smart contracts
 - `yarn hardhat test [test file(s)]` runs the unit tests specified
 - `yarn size` reports the size of your compiled smart contracts in KB
+- `yarn coverage` runs solidity-coverage, make sure to stop the hardhat node process first
 
 ### Typechain
 
