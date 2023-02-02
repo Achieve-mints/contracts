@@ -25,6 +25,7 @@ contract ExampleToken is SoulBoundSubTokenI {
         uint256 tokenId = _base.mint(msg.sender);
         _owners[tokenId] = msg.sender;
         _metadata[tokenId] = ExampleTokenMetaData(userDefinedString_);
+        _claimed[msg.sender] = true;
         return tokenId;
     }
 
