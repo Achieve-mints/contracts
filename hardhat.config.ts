@@ -7,6 +7,7 @@ import "hardhat-gas-reporter";
 import "hardhat-contract-sizer";
 import "hardhat-docgen";
 import "solidity-coverage";
+import "@nomiclabs/hardhat-etherscan";
 
 // user created tasks
 import "./tasks/index";
@@ -22,13 +23,9 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    rinkeby: {
-      url: envconfig.rinkeby.provider_url,
-      //   accounts: [`0x${envconfig.rinkeby.private_key}`],
-    },
-    mainnet: {
-      url: envconfig.mainnet.provider_url,
-      //   accounts: [`0x${envconfig.mainnet.private_key}`],
+    fuji: {
+      url: envconfig.fuji.provider_url,
+      accounts: [`0x${envconfig.fuji.private_key}`],
     },
   },
   typechain: {
@@ -40,6 +37,9 @@ const config: HardhatUserConfig = {
     path: "./docs",
     clear: true,
     runOnCompile: true,
+  },
+  etherscan: {
+    apiKey: envconfig.snowtrace.api_key,
   },
 };
 

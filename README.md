@@ -1,4 +1,4 @@
-# STOMPS
+# Achieve-Mints
 
 An upgradeable contract system for SoulBound tokens.
 
@@ -24,6 +24,40 @@ npx hardhat node
 npx hardhat run --network localhost scripts/001-deploy-soulbound-base.ts
 ```
 
+## Deploy
+
+### Environment Variables
+
+In `.env` (copy from `.env.example`) you can configure your environment variables. These are read by `./utils/config.ts`.
+
+### Actual Deployment
+
+Deploy to fuji with the following command:
+
+```
+npx hardhat run --network fuji scripts/001-deploy-soulbound-base.ts
+```
+
+### Verification on SnowTrace
+
+Read `.openzeppelin/NETWORK.json` and get the address for the implementation contract
+
+Then verify using:
+
+```
+npx hardhat verify SOULBOUND_BASE_IMPLEMENTATION_ADDRESS --network fuji
+```
+
+Next verify the example contract using:
+
+
+```
+npx hardhat verify EXAMPLE_ADDRESS SOULBOUND_BASE_PROXY_ADDRESS --network fuji
+```
+
+Finally, go to snowtrace and view SOULBOUND_BASE_IMPLEMENTATION_ADDRESS, and click "More options" to enable Proxy view for the contract.
+
+
 ## Commands
 
 - `yarn clean:contracts` perform hardhat cleaning
@@ -35,37 +69,19 @@ npx hardhat run --network localhost scripts/001-deploy-soulbound-base.ts
 - `yarn prettier:lint` fixes prettier issues
 - `yarn coverage` runs solidity-coverage, make sure to stop the hardhat node process first
 
-### Typechain
+### Tasks
 
-Generates typings for your contracts after compiling automatically (in `./typechain`)
+Additional tasks can be added easily in `./tasks/index.ts` 
 
-### Mocha, chai, chai-ethers, chai-as-promised
+#### Check if subtoken is enabled
 
-Allows for easy testing with improved compatability with asynchronous functions and smart contracts (reverts, BigNumber, etc.)
+- `npx hardhat --network fuji base:subtoken:enabled --base BASE_PROXY --subtoken SUBTOKEN_ADDRESS`
 
-### Hadhat-contract-sizer
+#### Look up metadata:
 
-Size matters on the blockchain. See [their docs](https://github.com/ItsNickBarry/hardhat-contract-sizer) for configuration details, but you can simply run `yarn size` and you'll get a breakdown of how big each contract is.
+- `npx hardhat --network fuji nft:metadata --base BASE_PROXY --id 1`
 
-### Prettier
-
-Configured for both your Solidity and Typescript code
-
-### .env parsing
-
-In `./utils/config.ts` you can configure your environment variables to have default values so things don't break midway through your script because you forgot an environment variable.
-
-### Hooks
-
-#### Precommit
-
-Via Husky, check styling
-
-#### On PR
-
-Check that contracts compile and tests pass
-
-### Static analysis
+### Static Analysis
 
 To install slither:
 
