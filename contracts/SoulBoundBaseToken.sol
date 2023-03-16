@@ -82,7 +82,6 @@ contract SoulBoundBaseToken is
         return subtoken.metadata(tokenId_);
     }
 
-
     /// @notice Defines the baseURI for all subsequent uri lookups
     /// @param baseURI_ The new baseURI
     function setBaseURI(string memory baseURI_) external onlyRole(DEFAULT_ADMIN_ROLE) {
