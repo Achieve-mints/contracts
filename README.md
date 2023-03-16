@@ -24,6 +24,17 @@ npx hardhat node
 npx hardhat run --network localhost scripts/001-deploy-soulbound-base.ts
 ```
 
+To get proxy address:
+
+`cat .openzeppelin/unknown-31337.json | jq -r ".proxies[-1].address"`
+
+Modify the subtoken deployment scripts appropriately, then run:
+
+```
+npx hardhat run --network localhost scripts/002-deploy-example-subtoken.ts
+npx hardhat run --network localhost scripts/003-deploy-avaxsummit2023token-subtoken.ts
+```
+
 ## Deploy
 
 ### Environment Variables
@@ -36,6 +47,16 @@ Deploy to fuji with the following command:
 
 ```
 npx hardhat run --network fuji scripts/001-deploy-soulbound-base.ts
+```
+
+To get proxy address:
+
+`cat .openzeppelin/avalanche-fuji.json | jq -r ".proxies[-1].address"`
+
+Then run additional deploy scripts (after modifying them using the proxy address):
+
+```
+npx hardhat run --network fuji scripts/003-deploy-avaxsummit2023token-subtoken.ts
 ```
 
 ### Verification on SnowTrace
