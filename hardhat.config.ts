@@ -27,6 +27,10 @@ const config: HardhatUserConfig = {
       url: envconfig.fuji.provider_url,
       accounts: [`0x${envconfig.fuji.private_key}`],
     },
+    iotest: {
+      url: envconfig.iotest.provider_url,
+      accounts: [`0x${envconfig.iotest.private_key}`],
+    },
   },
   typechain: {
     outDir: "typechain",

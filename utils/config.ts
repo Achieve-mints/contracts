@@ -9,6 +9,10 @@ interface IConfig {
     provider_url: string;
     private_key: string;
   };
+  iotest: {
+    provider_url: string;
+    private_key: string;
+  };
 }
 
 export const getEnv = (key: string, defaultValue?: any) => {
@@ -36,5 +40,9 @@ export const envconfig: IConfig = {
   fuji: {
     provider_url: getEnv("FUJI_PROVIDER_URL", ""),
     private_key: getEnv("FUJI_PRIVATE_KEY", ""),
+  },
+  iotest: {
+    provider_url: getEnv("IOTEST_PROVIDER_URL", ""),
+    private_key: getEnv("IOTEST_PRIVATE_KEY", ""),
   },
 };
