@@ -8,6 +8,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+task("gen-wallet", "Creates a new wallet", async (taskArgs, hre) => {
+  const wallet = hre.ethers.Wallet.createRandom();
+  console.log('address', wallet.address);
+  console.log('mnemonic', wallet.mnemonic.phrase);
+  console.log('privateKey', wallet.privateKey);
+});
+
 task("base:subtoken:enabled", "Check if subtoken is enabled")
 .addParam("base", "Base address")
 .addParam("subtoken", "Subtoken address")
