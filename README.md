@@ -119,3 +119,11 @@ slither .
 ```
 
 More documentation can be found here: https://github.com/crytic/slither
+
+
+### Deployed Contracts
+
+#### io-test
+
+* AVAXSummit2023Token `0x96491ca49D8275042E581Cbc043d29dd14Df54C2`
+* AlphaTesterToken `0x985b62F52E7Fc4F48bbf4CDCbe4c472f4C72d29B`
