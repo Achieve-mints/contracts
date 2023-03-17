@@ -24,6 +24,25 @@ task("base:subtoken:enabled", "Check if subtoken is enabled")
   console.log(await baseContract._subTokensEnabled(subtoken));
 });
 
+task("base:setBaseURI", "Set new base uri")
+.addParam("base", "Base address")
+.addParam("uri", "Subtoken address")
+.setAction(async ({ base, uri }, hre) => {
+  const BaseContract = await hre.ethers.getContractFactory("SoulBoundBaseToken");
+  const baseContract = await BaseContract.attach(base);
+  console.log(await baseContract.setBaseURI(uri));
+});
+
+task("base:tokenURI", "Get URI of token")
+.addParam("base", "Base address")
+.addParam("tokenid", "token id")
+.setAction(async ({ base, tokenid }, hre) => {
+  const BaseContract = await hre.ethers.getContractFactory("SoulBoundBaseToken");
+  const baseContract = await BaseContract.attach(base);
+  console.log(await baseContract.tokenURI(tokenid));
+});
+
+
 
 task("nft:metadata", "Look up metadata of a token")
 .addParam("base", "Base address")
