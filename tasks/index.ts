@@ -39,7 +39,8 @@ task("base:tokenURI", "Get URI of token")
 .setAction(async ({ base, tokenid }, hre) => {
   const BaseContract = await hre.ethers.getContractFactory("SoulBoundBaseToken");
   const baseContract = await BaseContract.attach(base);
-  console.log(await baseContract.tokenURI(tokenid));
+  const uri = await baseContract.tokenURI(tokenid);
+  console.log(uri);
 });
 
 
@@ -59,6 +60,15 @@ task("nft:metadata", "Look up metadata of a token")
   console.log(decoded[0]);
 });
 
+task("alphatester:owner", "Check alphatester owner")
+.addParam("address", "Alphatester address")
+.setAction(async ({ address }, hre) => {
+  const AlphaTesterToken = await hre.ethers.getContractFactory("AlphaTesterToken");
+  const alphaTesterToken = await AlphaTesterToken.attach(address);
+
+  const owner = await alphaTesterToken.owner();
+  console.log(owner);
+});
 task("alphatester:mint", "Mint alphatester token")
 .addParam("alphatester", "Alphatester address")
 .addParam("address", "Address to mint to")
