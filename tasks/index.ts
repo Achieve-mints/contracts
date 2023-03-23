@@ -58,3 +58,17 @@ task("nft:metadata", "Look up metadata of a token")
   const decoded = abiCoder.decode(["string"], metadata);
   console.log(decoded[0]);
 });
+
+task("alphatester:mint", "Mint alphatester token")
+.addParam("alphatester", "Alphatester address")
+.addParam("address", "Address to mint to")
+.setAction(async ({ alphatester, address }, hre) => {
+  const [deployer, alphatestOwner] = await hre.ethers.getSigners();
+
+  const AlphaTesterToken = await hre.ethers.getContractFactory("AlphaTesterToken");
+  const alphaTesterToken = await AlphaTesterToken.attach(alphatester);
+
+  const tx = await alphaTesterToken.connect(alphatestOwner).mint(address);
+  console.log(tx);
+  console.log(await tx.wait());
+});

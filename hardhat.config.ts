@@ -29,11 +29,17 @@ const config: HardhatUserConfig = {
     },
     iotest: {
       url: envconfig.iotest.provider_url,
-      accounts: [`0x${envconfig.iotest.private_key}`],
+      accounts: [
+        `0x${envconfig.iotest.private_key}`,
+        `0x${envconfig.iotest.alphatester_private_key}`,
+      ],
     },
     io: {
       url: envconfig.io.provider_url,
-      accounts: [`0x${envconfig.io.private_key}`],
+      accounts: [
+        `0x${envconfig.io.private_key}`,
+        `0x${envconfig.io.alphatester_private_key}`
+      ],
     },
   },
   typechain: {

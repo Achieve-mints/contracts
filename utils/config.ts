@@ -12,10 +12,12 @@ interface IConfig {
   iotest: {
     provider_url: string;
     private_key: string;
+    alphatester_private_key: string;
   };
   io: {
     provider_url: string;
     private_key: string;
+    alphatester_private_key: string;
   };
 }
 
@@ -48,9 +50,11 @@ export const envconfig: IConfig = {
   iotest: {
     provider_url: getEnv("IOTEST_PROVIDER_URL", ""),
     private_key: getEnv("IOTEST_PRIVATE_KEY", ""),
+    alphatester_private_key: getEnv("IOTEST_ALPHATESTER_PRIVATE_KEY", ""),
   },
   io: {
     provider_url: getEnv("IO_PROVIDER_URL", ""),
     private_key: getEnv("IO_PRIVATE_KEY", ""),
+    alphatester_private_key: getEnv("IO_ALPHATESTER_PRIVATE_KEY", ""),
   },
 };
