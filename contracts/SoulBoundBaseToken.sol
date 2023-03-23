@@ -50,7 +50,7 @@ contract SoulBoundBaseToken is
     // @notice This is the constructor for upgradeable contracts
     function initialize() public initializer {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        __ERC721_init("Test", "TST");
+        __ERC721_init("Achievemints", "ACHV");
     }
 
     /// @notice Only subtokens may call mint, they can process and store additional metadata using the returned newItemId
