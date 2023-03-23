@@ -31,6 +31,10 @@ const config: HardhatUserConfig = {
       url: envconfig.iotest.provider_url,
       accounts: [`0x${envconfig.iotest.private_key}`],
     },
+    io: {
+      url: envconfig.io.provider_url,
+      accounts: [`0x${envconfig.io.private_key}`],
+    },
   },
   typechain: {
     outDir: "typechain",

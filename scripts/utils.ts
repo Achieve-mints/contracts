@@ -14,7 +14,11 @@ export const chains: {[id: string]: ChainDetails}= {
   'iotest': {
     soulboundBaseTokenAddress: '0xf5443a26988dBe6Ab1b21FBE352B56717dAeB957',
     ownerAddress: '0x806A02A0Ae1863Be62682722C011ce6B9D23160B',
-  }
+  },
+  'io': {
+    soulboundBaseTokenAddress: '0xa6421E906a749B357Da4C10aEB0d8d588939862C',
+    ownerAddress: '0x118632c7e927456b34A788CDcA002964872f8739',
+  },
 }
 
 export async function addSubToken(baseAddress: string, subtokenAddress: string) {
