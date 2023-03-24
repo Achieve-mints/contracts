@@ -82,3 +82,15 @@ task("alphatester:mint", "Mint alphatester token")
   console.log(tx);
   console.log(await tx.wait());
 });
+
+task("alphatester:transferOwner", "Check alphatester owner")
+.addParam("alphatester", "Alphatester address")
+.addParam("owner", "New owner address")
+.setAction(async ({ alphatester, owner }, hre) => {
+  const AlphaTesterToken = await hre.ethers.getContractFactory("AlphaTesterToken");
+  const alphaTesterToken = await AlphaTesterToken.attach(alphatester);
+
+  const tx = await alphaTesterToken.transferOwnership(owner);
+  console.log(tx);
+  console.log(await tx.wait());
+});
