@@ -125,7 +125,7 @@ More documentation can be found here: https://github.com/crytic/slither
 
 #### io
 
-* AlphaTesterToken `0x8B9EA099bF837903d0456A0d8Ab118fC022B4382`
+* AlphaTesterToken `0xcA6B89Aaa3F6389Ad97405573dA80D34acEfA92A`
 
 #### io-test
 
