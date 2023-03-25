@@ -17,7 +17,7 @@ contract AlphaTesterToken is SoulBoundSubTokenI, Ownable {
 
     function mint(address to_) external onlyOwner returns (uint256) {
         require(!_claimed[to_], "already claimed");
-        uint256 tokenId = _base.mint(msg.sender);
+        uint256 tokenId = _base.mint(to_);
         _owners[tokenId] = to_;
         _claimed[to_] = true;
         return tokenId;
