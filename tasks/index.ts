@@ -24,6 +24,17 @@ task("base:subtoken:enabled", "Check if subtoken is enabled")
   console.log(await baseContract._subTokensEnabled(subtoken));
 });
 
+task("base:subtoken:setenabled", "Set whether subtoken is enabled")
+.addParam("base", "Base address")
+.addParam("subtoken", "Subtoken address")
+.addParam("enabled", "Enabled")
+.setAction(async ({ base, subtoken, enabled }, hre) => {
+  const BaseContract = await hre.ethers.getContractFactory("SoulBoundBaseToken");
+  const baseContract = await BaseContract.attach(base);
+  const tx = await baseContract.setSubToken(subtoken, enabled);
+  console.log(await tx.wait())
+});
+
 task("base:setBaseURI", "Set new base uri")
 .addParam("base", "Base address")
 .addParam("uri", "Subtoken address")
