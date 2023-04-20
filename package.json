@@ -1,8 +1,8 @@
 {
-  "name": "stomps",
+  "name": "achievemints-contracts",
   "private": true,
   "version": "1.0.0",
-  "description": "STOMPS SoulBound token",
+  "description": "achievemints contracts",
   "author": "Kasumi Null <kasumi.null@yandex.com>",
   "license": "MIT",
   "scripts": {
