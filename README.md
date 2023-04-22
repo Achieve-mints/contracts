@@ -125,6 +125,8 @@ More documentation can be found here: https://github.com/crytic/slither
 
 #### io
 
+* SoulBoundBaseToken `0xa6421E906a749B357Da4C10aEB0d8d588939862C`
+* AVAXSummit2023Token `0x7e20936d9ea7A10c65c09190fdc277811c0a2472`
 * AlphaTesterToken `0x0a320D4828e3492BE966d9e7DFfBbDF7320d12b2`
 
 #### io-test
