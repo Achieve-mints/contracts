@@ -126,10 +126,10 @@ describe("SoulBound Base Unit Tests", () => {
 
   describe("meta", () => {
     it("get name", async () => {
-      expect(await base.name()).to.equal("Test");
+      expect(await base.name()).to.equal("Achievemints");
     });
     it("get symbol", async () => {
-      expect(await base.symbol()).to.equal("TST");
+      expect(await base.symbol()).to.equal("ACHV");
     });
   });
 });
